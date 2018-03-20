@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobService } from '../glob.service';
+import { GlobService } from '../glob-service/glob.service';
 
 @Component({
   selector: 'app-comp-a',
   templateUrl: './comp-a.component.html',
   styleUrls: ['./comp-a.component.css'],
-  providers: [GlobService]
+
 })
 export class CompAComponent implements OnInit {
 
