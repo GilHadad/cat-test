@@ -12,7 +12,18 @@ export class NoteListComponent implements OnInit {
   constructor(private global: GlobService) { }
 
   ngOnInit() {
-    this.global.obNoteList.subscribe(list => this.noteList = list);
+    this.global.noteListRes.subscribe(list => this.noteList = list);
+    // this.global.obNoteList.subscribe(list => this.noteList = list);
+    // this.global.obNoteList.subscribe(list => {
+    //   list.forEach(item => {
+    //     console.log(item);
+    //     // this.noteList.push(item);
+    //   });
+    // });
+  }
+
+  aaa() {
+    this.noteList.forEach(item => console.log(item));
   }
 
 }

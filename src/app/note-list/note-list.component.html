@@ -1,5 +1,7 @@
-<div *ngFor="let note of noteList.observableList | async">
+<button type="button" class="btn btn-info" (click)="aaa()">Print</button>
+
+<div *ngFor="let note of noteList">
   <!-- <button type="button" class="btn btn-info" (click)="global.addNote(newNote)">delete</button>
   <button type="button" class="btn btn-info" (click)="global.addNote(newNote)">update</button> -->
-  <p>{{ note.content }}</p> {{ note.createdAt }}
+  <p>{{ note.content }}</p> {{ note.createdAt }} sdfsdfsd 
 </div>

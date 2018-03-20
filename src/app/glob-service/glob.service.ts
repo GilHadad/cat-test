@@ -23,16 +23,20 @@ export class GlobService {
     this.glob.next(update);
   }
 
-  getNoteList(): Observable<Note[]> {
+
+
+
+
+  get noteListRes(): Observable<Note[]> {
     return this.obNoteList.asObservable();
   }
 
   addNote(note: Note) {
-
     note.createdAt = new Date();
-    console.log(note);
     this.noteList.push(note);
     this.obNoteList.next(this.noteList);
+
+
   }
 
 }
