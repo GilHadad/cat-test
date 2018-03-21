@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GlobService, Note } from '../glob-service/glob.service';
 
 @Component({
@@ -6,15 +6,17 @@ import { GlobService, Note } from '../glob-service/glob.service';
   templateUrl: './update-note.component.html',
   styleUrls: ['./update-note.component.css']
 })
-export class UpdateNoteComponent implements OnInit {
+export class UpdateNoteComponent implements OnInit, OnDestroy {
 
   private selectedNote: Note;
   private newNoteContent: String;
 
+  private subscribe: any;
+
   constructor(private global: GlobService) { }
 
   ngOnInit() {
-    this.global.getSelectedNote.subscribe(note => {
+    this.subscribe = this.global.getSelectedNote.subscribe(note => {
       this.selectedNote = note;
       if (note) { this.newNoteContent = note.content; }
 
@@ -23,6 +25,11 @@ export class UpdateNoteComponent implements OnInit {
 
   hideComp() {
     this.selectedNote = null;
+  }
+
+
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
   }
 
 }

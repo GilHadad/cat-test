@@ -32,8 +32,6 @@ export class GlobService {
     this.obSelectedNote.next(note);
   }
 
-
-
   addNote(note: Note) {
     note.createdAt = new Date();
     this.noteList.push(note);
@@ -48,7 +46,7 @@ export class GlobService {
   updateNoteContent(note: Note, content: String) {
     note.content = content;
     this.setSelectedNote(note);
-    // this.obSelectedNote.next(note);
+
   }
 
 
