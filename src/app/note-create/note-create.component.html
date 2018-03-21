@@ -1,4 +1,10 @@
-<textarea placeholder="add note..." class="form-control" name="note" rows="5" [(ngModel)]="newNote.content"></textarea>
-<div class="text-right">
-  <button type="button" class="btn btn-info" (click)="global.addNote(newNote)">Add note</button>
+<div class="row">
+    <div class="col-md-12"><h2>Create note</h2></div>
+  <div class="col-md-8">
+    <textarea placeholder="add note..." class="form-control" name="note" rows="5" [(ngModel)]="newNote.content"></textarea>
+  </div>
+
+  <div class="col-md-4">
+      <button type="button" class="btn btn-outline-primary" (click)="addNote()">Add note</button>
+  </div>
 </div>

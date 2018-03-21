@@ -4,40 +4,53 @@ import { Observable } from 'rxjs/Observable';
 
 export interface Note {
   createdAt: Date;
-  content: string;
+  content: String;
 }
 
 @Injectable()
 export class GlobService {
 
-  private glob = new BehaviorSubject<string>('waiting for clicks....');
-  lastGlob = this.glob.asObservable();
+
 
   private noteList: Note[] = [];
   obNoteList: BehaviorSubject<Note[]> = new BehaviorSubject([]);
 
+  private selectedNote: Note;
+  obSelectedNote: BehaviorSubject<Note> = new BehaviorSubject<Note>(null);
 
   constructor() { }
 
-  updateGlobal(update: string) {
-    this.glob.next(update);
+  get getSelectedNote(): Observable<Note> {
+    return this.obSelectedNote.asObservable();
   }
-
-
-
-
 
   get noteListRes(): Observable<Note[]> {
     return this.obNoteList.asObservable();
   }
 
+  setSelectedNote(note: Note) {
+    this.obSelectedNote.next(note);
+  }
+
+
+
   addNote(note: Note) {
     note.createdAt = new Date();
     this.noteList.push(note);
     this.obNoteList.next(this.noteList);
-
-
   }
+
+  deleteNote(index: number) {
+    this.noteList.splice(index, 1);
+    this.obNoteList.next(this.noteList);
+  }
+
+  updateNoteContent(note: Note, content: String) {
+    note.content = content;
+    this.setSelectedNote(note);
+    // this.obSelectedNote.next(note);
+  }
+
 
 }
 

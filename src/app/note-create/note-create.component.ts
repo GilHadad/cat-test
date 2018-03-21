@@ -18,4 +18,12 @@ export class NoteCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  addNote() {
+    this.global.addNote(this.newNote);
+    this.newNote = {
+      createdAt: null,
+      content: null,
+    };
+  }
+
 }
